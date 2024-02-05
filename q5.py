@@ -1,7 +1,12 @@
 import numpy as np
+import re # import regex module
 
-# generate a 20 by 20 matrix of random numbers
-grid = np.floor(np.random.rand(20, 20) * 100)
+# read input_question_5.txt
+grid = []
+with open("input_question_5.txt", "r") as f:
+  for line in f.readlines():
+    # use regex to split the line by non-digit characters
+    grid.append(list(map(int, re.split(r'\D+', line.strip()))))
 
 def greatest_product_in_grid(grid):
   max_product = 0
@@ -34,6 +39,4 @@ def greatest_product_in_grid(grid):
 
   return max_product
 
-print(greatest_product_in_grid(grid))
-
-# need to specify output file
+np.savetxt('output_question_5.txt', np.array([greatest_product_in_grid(grid)]), fmt='%d', delimiter=' ')
