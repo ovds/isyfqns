@@ -27,7 +27,7 @@ def find_connected_parts(image):
             return
         visited[i][j] = True #mark as visited
         part.append((i, j)) #add to the connected part
-        #check the 8 directions
+        #check the 4/8 directions
         dfs(i - 1, j, part) 
         dfs(i + 1, j, part)
         dfs(i, j - 1, part)
